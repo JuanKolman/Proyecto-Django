@@ -20,14 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5k_53jo*%e-*&ftu$@sbt&v+(y0bew^(paj)x_)6i#mnz=ou6y'
+SECRET_KEY = 'django-insecure-c@6n8rnjp2a&@4y2^8ei4chcdd!$i370%hy2#c0jq(s6&vfrcz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-       '127.0.0.1', #localhost 
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'reports',
-    
+    'report',
 ]
 
 MIDDLEWARE = [
@@ -76,10 +73,11 @@ WSGI_APPLICATION = 'website.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'reports',
+        'NAME': 'inventario',
         'USER': 'postgres',
         'PASSWORD': 'system_2024',
         'HOST': 'localhost',
@@ -123,9 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
-STATIC_ROOT = 'staticfiles/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
