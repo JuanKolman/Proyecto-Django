@@ -1,8 +1,7 @@
 # env
-/.env/
+.env/
 
 #cache 
-website\website\__pycache__
-
-#migrations
-website\reports\migrations
+website/__pycache__
+report/__pycache__
+report/migrations/__pycache__/
