@@ -1,0 +1,8 @@
+# env
+/.env/
+
+#cache 
+website\website\__pycache__
+
+#migrations
+website\reports\migrations
