@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Centro de Reportes</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'img/logo.png' %}" alt="LOGO DE LA EMPRESA">
+            </a>
+        </div>
+        <div class="menu">
+            <img src="{% static 'img/menu.png' %}" alt="Menú">
+            <div class="menu-items">
+                {% if user_is_authenticated %}
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">Cerrar Sesión</button>
+                </form>
+                <button class="btn btn-info" onclick="location.href='{% url 'home' %}'">Dashboard</button>
+                {% else %}
+                    <button class="btn btn-primary" onclick="location.href='{% url 'login' %}'">Iniciar Sesión</button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+     <footer>
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'img/logo.png' %}" alt="LOGO DE LA EMPRESA">
+            </a>
+        </div>
+        <p>&copy; Informacion de la Empresa. Todos los derechos reservados.</p>
+    </footer>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

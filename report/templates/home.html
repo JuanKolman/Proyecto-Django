@@ -1,1 +1,14 @@
-<h1> Hello World</h1> 
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block content %}
+{{ error }}
+<div class="container-login">
+    <div class="login-card">
+        <h2>Bienvenido</h2>
+        <div id="login-card">
+            <a href="{% url 'login' %}"> Iniciar Sesion</a>
+        </div>
+   </div>
+</div>
+{% endblock content %}
