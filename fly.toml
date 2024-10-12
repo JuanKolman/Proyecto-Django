@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for proyecto-django on 2024-10-12T13:56:47-04:00
+# fly.toml app configuration file generated for proyecto-django-ancient-dew-7232 on 2024-10-12T14:15:12-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'proyecto-django'
+app = 'proyecto-django-ancient-dew-7232'
 primary_region = 'mia'
 console_command = '/code/manage.py shell'
 
