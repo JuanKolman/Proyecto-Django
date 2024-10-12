@@ -1,3 +1,0 @@
-SECRET_KEY=r(Am\x0b /Y39,jq5^,CT\x0b>kcYAE0&^zz6~-;ei*V\rjz|j&Y(N7x\\rz_j|\t~X
-DEBUG=TRUE
-DATABASE_URL=postgres://postgres:postgres@localhost:5432/blog 
