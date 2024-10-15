@@ -24,3 +24,25 @@ class PasswordVerificationForm(forms.Form):
         if not self.user.check_password(password):
             raise forms.ValidationError('Incorrect password')
         return password
+    
+# from django import forms
+# from .models import Cuestionario, Pregunta
+
+# class CuestionarioForm(forms.ModelForm):
+#     class Meta:
+#         model = Cuestionario
+#         fields = ('titulo', 'descripcion', 'asistencia')
+
+# class PreguntaForm(forms.ModelForm):
+#     class Meta:
+#         model = Pregunta
+#         fields = ('texto',)
+
+# PreguntaFormSet = forms.inlineformset_factory(
+#     Cuestionario,
+#     Pregunta,
+#     form=PreguntaForm,
+#     extra=3,  # minimum number of questions
+#     max_num=40,  # maximum number of questions
+#     validate_max=True
+# )

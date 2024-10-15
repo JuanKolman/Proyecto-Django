@@ -3,3 +3,4 @@ fly.toml
 tmp
 env
 .venv
+deploy-settings.py

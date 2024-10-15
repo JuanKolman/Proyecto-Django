@@ -7,3 +7,5 @@ report/__pycache__
 report/migrations/__pycache__/
 
 tmp
+.venv
+deploy-settings.py
