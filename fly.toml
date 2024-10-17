@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for proyecto-django-wild-brook-3460 on 2024-10-12T16:34:53-04:00
+# fly.toml app configuration file generated for proyecto-django-wild-brook-3460 on 2024-10-17T15:03:44-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -8,10 +8,7 @@ primary_region = 'mia'
 console_command = '/code/manage.py shell'
 
 [build]
-  script = [
-      "python manage.py collectstatic --noinput",
-      "python manage.py compilemessages"
-    ]
+
 [deploy]
   release_command = 'python manage.py migrate --noinput'
 

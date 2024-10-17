@@ -7,5 +7,6 @@ report/__pycache__
 report/migrations/__pycache__/
 
 tmp
+.secrets
 .venv
 deploy-settings.py
