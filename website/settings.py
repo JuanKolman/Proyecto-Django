@@ -1,19 +1,29 @@
+import os
+import environ
+import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
+
+
+#load env variables
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#enviroment variables
+environ.Env.read_env(BASE_DIR/'.venv')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c@6n8rnjp2a&@4y2^8ei4chcdd!$i370%hy2#c0jq(s6&vfrcz'
-
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'proyecto-django-wild-brook-3460.fly.dev']
+CSRF_TRUSTED_ORIGINS = ['https://proyecto-django-wild-brook-3460.fly.dev']
 
 
 # Application definition
@@ -25,11 +35,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic', #whitenoise
+
     'report',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', #whitenoise
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -63,14 +76,9 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'reportes',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///' + os.path.join('db.sqlite3')
+    )
 }
 
 
@@ -109,10 +117,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #whitenoise
 STATIC_URL = '/static/'
-
-MEDIA_URL = '/media/'
-
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'report/static'),
+]
+MEDIA_ROOT=os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL='/uploads/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -120,7 +132,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # redirects 
 LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
 REGISTRATION_REDIRECT_URL = 'home'
 
-LOGOUT_REDIRECT_URL = 'login'
+
 
